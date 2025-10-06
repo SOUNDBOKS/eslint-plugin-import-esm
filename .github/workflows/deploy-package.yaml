@@ -1,7 +1,7 @@
 name: Deploy package
 on:
   push:
-    branches: [main]
+    branches: [master]
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SOUNDBOKS_NPM_TOKEN: ${{ secrets.GH_PACKAGES_READ_TOKEN }}
