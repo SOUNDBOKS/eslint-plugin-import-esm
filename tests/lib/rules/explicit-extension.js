@@ -120,6 +120,13 @@ ruleTester.run('explicit-extension', rule, {
       output: `import docs from '~/docs/index.js';`,
       filename: __filename,
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
+    },
+    {
+      name: 'import relative file without extension but has dot in the path',
+      code: `import { User } from '~/src/foo.bepa';`,
+      output: `import { User } from '~/src/foo.bepa.js';`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     }
   ]
 });

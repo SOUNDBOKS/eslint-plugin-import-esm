@@ -1,6 +1,4 @@
-# Validate if import and export paths have an explicit extension (`import-esm/explicit-extension`)
-
-💼 This rule is enabled in the ✅ `recommended` config.
+# Validate if import and export paths have an explicit extension (`@soundboks/import-esm/explicit-extension`)
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
@@ -34,5 +32,15 @@ The extension to use when auto-fixing. Defaults to `.js`.
 ```json
 {
   "import-esm/explicit-extension": ["error", { "extension": ".mjs" }]
+}
+```
+
+#### `debug`
+
+Set to true to see an output of all updated imports.
+
+```json
+{
+  "import-esm/explicit-extension": ["error", { "debug": true }]
 }
 ```
