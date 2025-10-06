@@ -1,0 +1,22 @@
+name: Run tests
+
+on: [pull_request]
+
+env:
+  HUSKY: 0
+  SOUNDBOKS_NPM_TOKEN: ${{ secrets.GH_PACKAGES_READ_TOKEN }}
+  NODE_ENV: 'test'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.X]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run test

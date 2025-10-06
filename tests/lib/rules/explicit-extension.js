@@ -21,18 +21,18 @@ ruleTester.run('explicit-extension', rule, {
     {
       name: 'ignore computed dynamic imports',
       code: `
-const foo = 'foo.js';
-import(\`./lib/\${foo}\`);
-`,
+    const foo = 'foo.js';
+    import(\`./lib/\${foo}\`);
+    `,
       filename: path.resolve('./foo.js')
     },
     {
       name: 'ignore regular exports',
       code: `
-const foo = 'foo';
-export default foo;
-export { foo };
-`,
+    const foo = 'foo';
+    export default foo;
+    export { foo };
+    `,
       filename: path.resolve('./foo.js')
     }
   ],
@@ -104,6 +104,20 @@ export { foo };
       name: 'export all relative file without extension',
       code: `export * from './foo';`,
       output: `export * from './foo.js';`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
+    },
+    {
+      name: 'import relative file without extension with tsconfig paths',
+      code: `import foo from '~/src/foo';`,
+      output: `import foo from '~/src/foo.js';`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
+    },
+    {
+      name: 'import relative file without extension with tsconfig paths, appending index',
+      code: `import docs from '~/docs';`,
+      output: `import docs from '~/docs/index.js';`,
       filename: __filename,
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     }

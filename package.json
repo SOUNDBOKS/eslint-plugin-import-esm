@@ -24,9 +24,7 @@
     "lint:eslint-docs": "npm-run-all \"update:eslint-docs -- --check\"",
     "lint:js": "eslint .",
     "test": "mocha tests --recursive --exclude **/fixtures/**",
-    "update:eslint-docs": "eslint-doc-generator",
-    "release": "standard-version",
-    "postrelease": "git push --follow-tags origin master"
+    "update:eslint-docs": "eslint-doc-generator"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
